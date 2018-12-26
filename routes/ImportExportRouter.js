@@ -39,8 +39,8 @@ router.route('/export').post((req, res) => {
       const pathways = req.body.pathways;
       Pathway.remove({}, (err, res) => {
         if (err) {
-console.log(err)
-;}
+        console.log(err)
+        ;}
         pathways.forEach((pathway) => {
           const pathwayModelItem = new Pathway({
             name: pathway.name,

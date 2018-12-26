@@ -22,6 +22,7 @@ gulp.task('browserify', function () {
   .transform('babelify', {
     presets: ['es2015', 'react'] 
   })
+  .transform(require('browserify-css'))
   .plugin(resolutions, '*')
     .on('time', function (time) {
       console.log('Bundle updated in ' + (time / 1000) + 's.');

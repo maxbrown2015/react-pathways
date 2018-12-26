@@ -1,0 +1,15 @@
+.HeaderContainer {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.PageTitle {
+  font-size: 50px;
+  color: white;
+}
+
+.PageSubtitle {
+  font-size: 20px;
+  color: white;
+}

@@ -1,53 +1,20 @@
+// redux actions 
 
-// CIS 197 - React HW
-const changeCourse = (index, newCourse) => {
+const nodeSelect = (connected, selected) => {
   return {
-    type: 'CHANGE_COURSE',
-    index: index,
-    newCourse: newCourse
+    type: 'NODE_SELECT',
+    connected: connected,
+    selected: selected
   };
 };
 
-const deleteCourse = (index) => {
+const legendSelect = (pathway) => {
   return {
-    type: 'DELETE_COURSE',
-    index: index
-  };
-};
-
-const addCourse = (newCourse) => {
-  return {
-    type: 'ADD_COURSE',
-    newCourse: newCourse
-  };
-};
-
-const changePathway = (index, pathway) => {
-  return {
-    type: 'CHANGE_PATHWAY',
-    index: index,
+    type: 'LEGEND_SELECT',
     pathway: pathway
   };
 };
 
-const undoChanges = () => {
-  return {
-    type: 'UNDO_CHANGES'
-  };
-};
-
-const exportData = () => {
-  return {
-    type: 'EXPORT'
-  };
-};
-
-const cacheState = () => {
-  return {
-    type: 'CACHE'
-  };
-};
 
 
-
-export {changeCourse, deleteCourse, addCourse, changePathway, undoChanges, exportData, cacheState};
+export {nodeSelect, legendSelect};
