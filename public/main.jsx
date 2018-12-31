@@ -16,7 +16,8 @@ function edgesAreSame(first, second) {
 
 function parseCoursesIntoNodeSet(courses) {
   let nodes = [];
-  courses.forEach((course, index) => {
+  Object.keys(courses).forEach((key) => {
+    const   course = courses[key];
     const node = {
       id: Number(course.number),
       label: course.number,
@@ -51,7 +52,8 @@ function createEdgeSet(nodes, pathways) {
 
   let edgeID = 0;
   for (const pathway of Object.keys(pathwayLists)) {
-    console.log(pathwayLists[pathway]);
+    console.log(pathway);
+   // console.log(pathwayLists[pathway]);
     const currentList = pathwayLists[pathway];
 
     let prev = currentList[0];
@@ -63,7 +65,8 @@ function createEdgeSet(nodes, pathways) {
       const edge = {
         id: edgeID,
         from: prev, 
-        to: curr
+        to: curr,
+        color: pathways[pathway].color
       }
 
       edges.push(edge);
@@ -108,8 +111,8 @@ function createEdgeSet(nodes, pathways) {
 
 
 function loadFromMongoAndInitialize() {
-  let courses = [];
-  let pathways = [];
+  let courses = {};
+  let pathways = {};
 
   axios.get('http://localhost:3000/importexport/import').then(response => {
     //console.log(response);
@@ -121,8 +124,9 @@ function loadFromMongoAndInitialize() {
         link: course.link,
         selectedPathways: course.selectedPathways
       };
-      courses.push(courseViewData);
+      courses[Number(course.number)] = (courseViewData);
     });
+    console.log(courses);
 
     response.data.pathways.forEach((pathway) => {
       const pathwayViewData = {
@@ -132,18 +136,22 @@ function loadFromMongoAndInitialize() {
         highlight: pathway.highlight,
         description: pathway.description,
       };
-      pathways.push(pathwayViewData);
+      pathways[pathway.id] = pathwayViewData;
     });
 
+    console.log(pathways);
+
     // sort courses by number
-    courses.sort(function (a, b) {
+    Object.keys(courses).sort(function (a, b) {
       const aNum = Number(a.number);
       const bNum = Number(b.number);
       return aNum - bNum;
     });
 
+    console.log(courses);
+
     const nodes = parseCoursesIntoNodeSet(courses);
-    const edges = createEdgeSet(nodes);
+    const edges = createEdgeSet(nodes, pathways);
 
     const state = {
       courses: courses,
