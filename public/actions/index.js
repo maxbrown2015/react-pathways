@@ -1,12 +1,26 @@
 // redux actions 
 
-const nodeSelect = (connected, selected) => {
+const networkSelect = (selected) => {
   return {
-    type: 'NODE_SELECT',
-    connected: connected,
+    type: 'NETWORK_SELECT',
     selected: selected
   };
 };
+
+const catalogSelect = (selected) => {
+  return {
+    type: 'CATALOG_SELECT',
+    selected: selected
+  };
+};
+
+
+const buildCatalog = (connected) => {
+  return {
+    type: 'BUILD_CATALOG',
+    connected: connected
+  };
+}
 
 const legendSelect = (pathway) => {
   return {
@@ -15,6 +29,20 @@ const legendSelect = (pathway) => {
   };
 };
 
+const setActivePathways = (activePathways) => {
+  return {
+    type: 'SET_ACTIVE_PATHWAYS',
+    activePathways: activePathways
+  }
+}
+
+const resetSelectionOptions = () => {
+  return {
+    type: 'RESET_SELECTION_OPTIONS',
+  }
+}
 
 
-export {nodeSelect, legendSelect};
+
+
+export {networkSelect, catalogSelect, buildCatalog, legendSelect, setActivePathways, resetSelectionOptions};

@@ -32,7 +32,7 @@ function parseCoursesIntoNodeSet(courses) {
 
 function createEdgeSet(nodes, pathways) {
   let edges = [];
-  console.log(nodes);
+ //  console.log(nodes);
   let pathwayLists = {
     human_rights: [],
     gender_sexuality: [],
@@ -52,7 +52,7 @@ function createEdgeSet(nodes, pathways) {
 
   let edgeID = 0;
   for (const pathway of Object.keys(pathwayLists)) {
-    console.log(pathway);
+    //console.log(pathway);
    // console.log(pathwayLists[pathway]);
     const currentList = pathwayLists[pathway];
 
@@ -61,12 +61,17 @@ function createEdgeSet(nodes, pathways) {
       if (index === currentList.length || index === 0) {
         return;
       }
+     // console.log(pathways[pathway].color);
       let curr = node;
       const edge = {
         id: edgeID,
         from: prev, 
         to: curr,
-        color: pathways[pathway].color
+        color: {
+          color:  pathways[pathway].color,
+          highlight: pathways[pathway].color
+        },
+        pathway: pathway
       }
 
       edges.push(edge);
@@ -94,17 +99,18 @@ function createEdgeSet(nodes, pathways) {
     if (edgesAreSame(currEdge, nextEdge)) {
       currEdge['smooth'] = {type: 'curvedCCW', roundness: -0.2};
       nextEdge['smooth'] = {type: 'curvedCCW', roundness: 0.2};
-      currEdge['color'] = "#FFFFFF";
+
       i += 2; 
     }
     else {
       i++;
     }
   }
-
-
-
   // console.log(edges);
+  edges.sort((a,b) => {
+    return a.id - b.id;
+  });
+
   return edges;
 }
 
@@ -159,6 +165,13 @@ function loadFromMongoAndInitialize() {
       graph: {
         nodes: nodes,
         edges: edges
+      },
+      activePathways: [],
+      selected: {},
+      selectionUpdateOptions: {
+        networkSelection: false,
+        edgeSelection: false,
+        catalogSelection: false
       }
     };
     

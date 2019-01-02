@@ -5,6 +5,7 @@ import HeaderContainer from './HeaderContainer'
 import Flexbox from 'flexbox-react';
 import '../styles/RootContainer.css';
 import CatalogContainer from './CatalogContainer';
+import LegendContainer from './LegendContainer';
 
 class RootContainer extends React.Component {
   constructor(props) {
@@ -21,7 +22,10 @@ class RootContainer extends React.Component {
     return (
     <Flexbox flexDirection={'column'}>
     <HeaderContainer store={this.props.store}/>
-    <NetworkContainer store={this.props.store}/>
+    <Flexbox flexDirection='row' width='100vw' height='150vh'>
+      <LegendContainer store={this.props.store}/>
+      <NetworkContainer store={this.props.store}/>
+    </Flexbox>
     <CatalogContainer store={this.props.store} />
     </Flexbox>);
   }

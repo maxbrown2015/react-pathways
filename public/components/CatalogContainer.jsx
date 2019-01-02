@@ -2,6 +2,8 @@
 import React from 'react';
 import '../styles/CatalogContainer.css';
 import Flexbox from 'flexbox-react';
+import * as actions from '../actions/index.js';
+
 
 const header = 'Course Information';
 
@@ -23,8 +25,7 @@ class CatalogContainer extends React.Component {
   sortConnectedNodes() {
     const selected = this.props.store.getState().selected;
     const courses = this.props.store.getState().courses;
-
-    console.log(courses[selected].selectedPathways[0]);
+    
     let coursePathways =  {}; 
     const pathwayOne = courses[selected].selectedPathways[0];
     const pathwayTwo = courses[selected].selectedPathways[1];
@@ -44,16 +45,19 @@ class CatalogContainer extends React.Component {
         {coursePathways[nodePathways[1]].push(node.value);}
       node = connectedNodes.next();
     }
+
+    
+
     return coursePathways;
 
 
   }
   renderPathwayLists() {
-    if (this.props.store.getState().selected) {
+    if (this.props.store.getState().connected) {
       const coursePathways = this.sortConnectedNodes();
       const courses = this.props.store.getState().courses;
       const pathways = this.props.store.getState().pathways;  
-      console.log(pathways);
+     // console.log(pathways);
 
       const pathwayKeys = Object.keys(coursePathways);
       const numberOfPathways = pathwayKeys.length;
@@ -63,13 +67,17 @@ class CatalogContainer extends React.Component {
       if (numberOfPathways === 1) {
         let markup = firstPathway.map((node, index) => {
             const course = courses[node];
-            return <Flexbox key={index} onClick={function(){console.log('clicked')}}>{course.title}</Flexbox>
+            return <Flexbox key={index} onClick={() => {
+              this.props.store.dispatch(actions.catalogSelect(node));
+            }}>{course.title}</Flexbox>
         });
 
-        console.log(markup);
+       // console.log(markup);
         return (
           <Flexbox className='PathwayList' flexDirection={'column'} width={'100%'} alignItems={'center'}>
-          <Flexbox >{pathways[pathwayKeys[0]].name}</Flexbox>
+          <Flexbox style={{
+            color: pathways[pathwayKeys[0]].color
+          }}>{pathways[pathwayKeys[0]].name}</Flexbox>
           {markup}
           </Flexbox>
         )
@@ -78,22 +86,30 @@ class CatalogContainer extends React.Component {
       if (numberOfPathways === 2) {
         let firstMarkup = firstPathway.map((node, index) => {
           const course = courses[node];
-          return <Flexbox key={index} onClick={function(){console.log('clicked')}}>{course.title}</Flexbox>
+          return <Flexbox key={index} onClick={() => {
+            this.props.store.dispatch(actions.catalogSelect(node));
+          }}>{course.title}</Flexbox>
         });
 
         let secondMarkup = secondPathway.map((node, index) => {
           const course = courses[node];
-          return <Flexbox key={index} onClick={function(){console.log('clicked')}}>{course.title}</Flexbox>
+          return <Flexbox key={index} onClick={() => {
+            this.props.store.dispatch(actions.catalogSelect(node));
+          }}>{course.title}</Flexbox>
         });
 
         return (
         <Flexbox className='PathwayList'flexDirection="row" justifyContent='center' alignSelf='center'>
           <Flexbox flexDirection='column' alignItems='center'>
-          <Flexbox>{pathways[pathwayKeys[0]].name}</Flexbox>
+          <Flexbox style={{
+            color: pathways[pathwayKeys[0]].color
+          }}>{pathways[pathwayKeys[0]].name}</Flexbox>
           {firstMarkup}
           </Flexbox>
           <Flexbox flexDirection='column' alignItems='center'>
-          <Flexbox>{pathways[pathwayKeys[1]].name}</Flexbox>
+          <Flexbox style={{
+            color: pathways[pathwayKeys[1]].color
+          }}>{pathways[pathwayKeys[1]].name}</Flexbox>
           {secondMarkup}
           </Flexbox>
         </Flexbox>
