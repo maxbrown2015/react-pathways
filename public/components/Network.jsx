@@ -164,7 +164,7 @@ class Network extends React.Component {
     this.state.network.setOptions({ edges: { selectionWidth: 0 } });
 
     this.state.network.setSelection({
-     // nodes: [selected],
+     //  nodes: [selected],
       edges: connectedEdgeArray
     });
     
