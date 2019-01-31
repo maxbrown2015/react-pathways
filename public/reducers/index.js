@@ -37,6 +37,10 @@ const mainReducer = (state, action) => {
         networkSelect: false, catalogSelect:false, legendSelect: false
       }});
      }
+
+     case 'HANDLE_SEARCH': {
+       
+     }
   }
   return state;
 };

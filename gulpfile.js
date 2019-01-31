@@ -10,6 +10,7 @@ var es = require('event-stream');
 var path = require('path');
 var zip = require('gulp-zip');
 
+
 gulp.task('browserify', function () {
   var bundler = browserify({
     entries: ['./public/main.jsx'],
@@ -23,6 +24,7 @@ gulp.task('browserify', function () {
     presets: ['es2015', 'react'] 
   })
   .transform(require('browserify-css'))
+
   .plugin(resolutions, '*')
     .on('time', function (time) {
       console.log('Bundle updated in ' + (time / 1000) + 's.');

@@ -14,19 +14,15 @@ class Legend extends React.Component {
   render() {
     const isActive = this.props.store.getState().activePathways.includes(this.props.pathway.id);
 
-    const Circle = posed.div({
+    const InnerCircle = posed.div({
       inActive: {
-        scale: 1,
+        scale: .75,
         borderRadius: '50%',  
         transition: {
           duration: 1000,
           type: 'spring', 
           ease: 'linear'
         }
-      },
-      active: {
-        scale: 1.5,
-        borderRadius: '50%',
       },
       transition: {
         duration: 1000,
@@ -35,18 +31,39 @@ class Legend extends React.Component {
       }
     });
 
+    const OuterCircle = posed.div({
+      inActive: {
+        opacity: 0,
+        borderRadius: '50%',  
+        transition: {
+          duration: 1000,
+          type: 'spring', 
+          ease: 'linear'
+        }
+      },
+      active: {
+        opacity: 1,
+        borderRadius: '50%',  
+      },
+      transition: {
+        duration: 1000,
+        type: 'spring', 
+        ease: 'linear'
+      }
+    })
+
+
+
     return (
     <Flexbox  alignItems='center' flexDirection='row' height={'100px'} width={'200px'}>
       <Flexbox marginLeft={'10px'}>
-
-        <Circle className='LegendIcon' pose={isActive ? 'active' :'inActive'} style={{
+        <InnerCircle className='LegendIcon' pose={isActive ? 'active' :'inActive'} style={{
           backgroundColor: this.props.pathway.color
         }} onClick={() => {
           this.props.store.dispatch(actions.legendSelect(this.props.pathway.id));
         }}/>
-
+    
       </Flexbox>
-
         <Flexbox marginLeft={'10px'}className={'LegendName'} style={{
           color: this.props.pathway.color
         }} onClick={() => {

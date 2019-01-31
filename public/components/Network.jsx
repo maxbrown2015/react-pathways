@@ -4,6 +4,7 @@ import Graph from 'react-graph-vis';
 import * as actions from '../actions/index.js';
 
 
+/*    */
 
 const networkOptions = {
   physics: {
@@ -29,6 +30,9 @@ const networkOptions = {
     zoomView: false,
     keyboard: false,
     selectConnectedEdges: false,
+  },
+  nodes: {
+    shape: 'circle'
   }
 }
 
@@ -42,7 +46,7 @@ const events = {
   }//
 };
 
-
+  
 const sharesPathways = (courses, root, curr) =>  {
   const rootNode = courses[root];
   const nodeToCheck = courses[curr];
@@ -171,7 +175,6 @@ class Network extends React.Component {
     this.boldSelectedEdges();
 
     
-
     this.props.store.dispatch(actions.buildCatalog(connectedNodes));
     this.props.store.dispatch(actions.setActivePathways(courses[root].selectedPathways));
   }

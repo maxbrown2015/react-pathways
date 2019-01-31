@@ -22,7 +22,7 @@ function parseCoursesIntoNodeSet(courses) {
       id: Number(course.number),
       label: course.number,
       title: course.title,
-      description: course.description,
+      description: "",
       selectedPathways: course.selectedPathways
     }
     nodes.push(node);
@@ -32,16 +32,16 @@ function parseCoursesIntoNodeSet(courses) {
 
 function createEdgeSet(nodes, pathways) {
   let edges = [];
- //  console.log(nodes);
   let pathwayLists = {
-    human_rights: [],
+    cities_environments: [],
     gender_sexuality: [],
-    intellectual_cultural: [],
-    politics_revolution: [],
+    culture_life: [],
+    global_connections: [],
     slavery_race: [],
-    economic_history: [],
-    war_peace: [],
-    religious_communities: []
+    ideas_beliefs: [],
+    law_society: [],
+    wealth_inequality: [],
+    war_revolution: []
   }
 
   nodes.forEach((node) => {
@@ -133,6 +133,8 @@ function loadFromMongoAndInitialize() {
       courses[Number(course.number)] = (courseViewData);
     });
     console.log(courses);
+
+    console.log(response.data.pathways);
 
     response.data.pathways.forEach((pathway) => {
       const pathwayViewData = {

@@ -13,3 +13,21 @@
   font-size: 20px;
   color: white;
 }
+
+.PageIntroContainer {
+  width: 66%;
+  height: 20vh;
+  display: table;
+  text-align: center;
+}
+
+.PageIntro {
+  width: 66%;
+  height: 80%;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 16px;
+  color: white;
+  align-self: center;
+  justify-content: center;
+}

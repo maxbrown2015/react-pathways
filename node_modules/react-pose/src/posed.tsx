@@ -14,7 +14,7 @@ type DomPopmotionConfigFactory<T> = (
 
 export type ComponentFactory<T> = (
   poseConfig?: DomPopmotionConfig | DomPopmotionConfigFactory<T>
-) => ComponentType<any>;
+) => ComponentType<PoseElementProps & T>;
 
 export type Posed = {
   <T>(component: ComponentType<T>): ComponentFactory<T>;
@@ -23,10 +23,10 @@ export type Posed = {
 
 const componentCache = new Map<string | ComponentType, ComponentFactory<any>>();
 
+type Props = { withParent: boolean; [key: string]: any };
 const createComponentFactory = (key: string | ComponentType) => {
   const componentFactory: ComponentFactory<any> = (poseConfig = {}) => {
-    // TODO: Replace functional context with new class property API
-    return forwardRef(({ withParent = true, ...props }, ref) => {
+    return forwardRef(({ withParent = true, ...props }: Props, ref) => {
       warning(
         props.innerRef === undefined,
         'innerRef is deprecated. Please use ref instead.'

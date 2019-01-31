@@ -1,10 +1,50 @@
+.CatalogContainer {
+
+}
+
 .CatalogHeader {
   font-size: 30px;
   margin-left: 10px;
   color: white;
 }
 
-.PathwayList {
-  font-size: 30px;
+.CourseTitle {
   color: white;
+  font-size: 30px
+}
+
+.CourseDescription {
+  color: white;
+  font-size: 25px
+}
+
+.CourseLink {
+  color: white;
+  font-size: 20px
+}
+
+.CourseLink:visited {
+  color: white;
+}
+
+.CourseLink:link {
+  color: white;
+}
+
+.CourseLink:hover {
+  cursor: pointer;
+}
+
+.CourseType {
+  color: white;
+  font-size: 20px
+}
+
+.PathwayList {
+  font-size: 20px;
+  color: white;
+}
+
+.PathwayItem:hover {
+  cursor: pointer;
 }

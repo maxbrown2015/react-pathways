@@ -7,3 +7,11 @@
 .LegendName {
   font-size: 16px;
 }
+
+.LegendIcon:hover {
+  cursor: pointer;
+}
+
+.LegendName:hover {
+  cursor: pointer;
+}
