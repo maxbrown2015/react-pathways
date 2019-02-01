@@ -30,7 +30,7 @@ app.use('/importexport', ImportExportRouter);
 
 
 var dbURI='mongodb://maxbrown:pathways1@ds153851.mlab.com:53851/upenn_history_pathways'
-mongoose.connect(dbURI,function(err){    
+mongoose.connect(process.env.DB_URI,function(err){    
     if(err){
     console.log('Some problem with the connection ' +err)   
     } 
