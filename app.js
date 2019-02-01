@@ -2,7 +2,7 @@
 import express from 'express';
 import path from 'path';
 import ejs from 'ejs';
-import mongoose from 'mongoose';
+//import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import ImportExportRouter from './routes/ImportExportRouter';
@@ -28,8 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use('/importexport', ImportExportRouter);  
 
-//mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Final')
-//console.log(Course);
+/*
 var dbURI='mongodb://maxbrown:pathways1@ds153851.mlab.com:53851/upenn_history_pathways'
 mongoose.connect(dbURI,function(err){    
     if(err){
@@ -41,7 +40,7 @@ mongoose.connect(dbURI,function(err){
 });
 
 global.mongoose = mongoose;
-
+*/
 
 app.get('/', (req, res) => {
   res.render('index');
