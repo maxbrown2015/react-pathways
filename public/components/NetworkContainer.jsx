@@ -18,7 +18,7 @@ class NetworkContainer extends React.Component {
 
   render() {
   //  console.log(this.props.store.getState().graph);
-    return <Flexbox flexDirection={'row'} width={'80%'} height={'100%'} className={'NetworkContainer'}>
+    return <Flexbox flexDirection={'row'} width={'85%'} height={'100%'} className={'NetworkContainer'}>
      <Network store={this.props.store}/>
     </Flexbox>
   }

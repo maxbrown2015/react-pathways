@@ -4,17 +4,53 @@ import Graph from 'react-graph-vis';
 import * as actions from '../actions/index.js';
 
 
+
 /*    */
 
+
 const networkOptions = {
+  autoResize: false,
+  width: '100%',
+  height: '100%',
   physics: {
     forceAtlas2Based: {
       gravitationalConstant: -50,
-      springLength: 500,
+      springLength: 200,
       springConstant: 0.9,
-      centralGravity: .01,
-      avoidOverlap: .0000001,
+      centralGravity: .02,
+      avoidOverlap: .999999,
+    },
+    solver: 'forceAtlas2Based'
+    
+  },
+  interaction: {
+    hoverConnectedEdges: false,
+    hover: true,
+    dragNodes: false,
+    dragView: false,
+    zoomView: false,
+    keyboard: false,
+    selectConnectedEdges: false,
+    tooltipDelay: 100
+  },
+  nodes: {
+    shape: 'circle',
+    widthConstraint: 45,
+    heightConstraint: 45,
+    font: {
+      size: 20
     }
+    /*
+    scaling: {
+      min: 45,
+      max: 45,
+      label: {
+        enabled: true,
+        min: 30,
+        max: 30
+      }
+    }
+    */
   },
   edges: {
     arrows: {
@@ -24,16 +60,6 @@ const networkOptions = {
     },
     smooth: true,
   },
-  interaction: {
-    dragNodes: false,
-    dragView: false,
-    zoomView: false,
-    keyboard: false,
-    selectConnectedEdges: false,
-  },
-  nodes: {
-    shape: 'circle'
-  }
 }
 
 const events = {
@@ -43,22 +69,12 @@ const events = {
    // console.log(nodes);
   //  console.log("Selected edges:");
    // console.log(edges);
-  }//
+  },//
+  hover: function(event) {
+    console.log(event);
+  }
 };
 
-  
-const sharesPathways = (courses, root, curr) =>  {
-  const rootNode = courses[root];
-  const nodeToCheck = courses[curr];
-
-  let res = false;
-  rootNode.selectedPathways.forEach((pathway) => {
-    if (nodeToCheck.selectedPathways.includes(pathway)) {
-      res = true;
-    }
-  });
-  return res;
-}
 
 const belongsToPathway = (courses, root, edge) => {
   return courses[root].selectedPathways.includes(edge.pathway);
@@ -106,16 +122,17 @@ class Network extends React.Component {
       console.log(activePathway);
       this.onLegendSelect(activePathway);
     }
-  }
-  
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
+    if (reduxStateUpdateOptions.searchSelect) {
+      this.onCourseSelect(selected);
+      this.props.store.dispatch(actions.resetSelectionOptions());
+    }
   }
+
 
   onLegendSelect(pathway) {
     const edges = this.props.store.getState().graph.edges;
-    console.log(edges);
+    // console.log(edges);
     
     const pathwayEdges = Object.keys(edges).filter((key) => {
       const edge = edges[key];
@@ -129,6 +146,7 @@ class Network extends React.Component {
 
 
   onCourseSelect(selected) {
+    console.log(selected);
     
     const courses = this.props.store.getState().courses;
     const graph = this.props.store.getState().graph;
@@ -174,9 +192,9 @@ class Network extends React.Component {
     
     this.boldSelectedEdges();
 
-    
+    console.log(courses[Number(selected)]);
     this.props.store.dispatch(actions.buildCatalog(connectedNodes));
-    this.props.store.dispatch(actions.setActivePathways(courses[root].selectedPathways));
+    this.props.store.dispatch(actions.setActivePathways(courses[Number(root)].selectedPathways));
   }
 
   boldSelectedEdges() {
@@ -188,7 +206,6 @@ class Network extends React.Component {
       }, 30 * i);
     }
   }
-
 
   setListeners() {
     this.state.network.on('selectNode', (event) => {
@@ -202,13 +219,20 @@ class Network extends React.Component {
       console.log(event);
       this.props.store.dispatch(actions.legendSelect(edgeObj.pathway));
     });
-    
+
+    this.state.network.on('hoverNode', () => {
+      document.body.style.cursor = "pointer";
+    });
+
+    this.state.network.on('blurNode', () => {
+      document.body.style.cursor = "auto";
+    });
   };
 
   render() {
     console.log('network rendered');
    // console.log(this.state.network);
-    return  <Graph graph={this.props.store.getState().graph} options={networkOptions} 
+    return  <Graph graph={this.props.store.getState().graph} options={networkOptions} events={events}
     getNetwork={network =>
       this.setState({network}, function() {
         this.setListeners();

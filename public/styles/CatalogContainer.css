@@ -9,18 +9,23 @@
 }
 
 .CourseTitle {
+  color: 	#f7f9fb;
+  font-size: 24px
+}
+
+.CourseInstructor {
   color: white;
-  font-size: 30px
+  font-size: 16px
 }
 
 .CourseDescription {
   color: white;
-  font-size: 25px
+  font-size: 16px
 }
 
 .CourseLink {
   color: white;
-  font-size: 20px
+  font-size: 16px
 }
 
 .CourseLink:visited {
@@ -37,14 +42,36 @@
 
 .CourseType {
   color: white;
-  font-size: 20px
+  font-size: 16px
 }
 
 .PathwayList {
-  font-size: 20px;
+  font-size: 16px;
   color: white;
 }
 
 .PathwayItem:hover {
   cursor: pointer;
+}
+
+/*****/
+
+.cross-fade-leave {
+  opacity: 1;
+}
+.cross-fade-leave.cross-fade-leave-active {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.cross-fade-enter {
+  opacity: 0;
+}
+.cross-fade-enter.cross-fade-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.cross-fade-height {
+  transition: height 0.5s ease-in-out;
 }

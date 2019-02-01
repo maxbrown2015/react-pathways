@@ -24,7 +24,7 @@ class LegendContainer extends React.Component {
 
   render() {
     console.log('legends-rendered');
-    return <Flexbox flexDirection={'column'} height={'100%'} width={'20%'}>{this.renderPathwayLegends()}</Flexbox>
+    return <Flexbox flexDirection={'column'} height={'100%'} width={'15%'}>{this.renderPathwayLegends()}</Flexbox>
   }
 }
 

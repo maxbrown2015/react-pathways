@@ -24,6 +24,8 @@ router.route('/export').post((req, res) => {
           title: course.title,
           description: course.description,
           link: course.link,
+          type: 'Lecture',
+          instructor: 'Dr. Yvonne Fabella',
           selectedPathways: course.selectedPathways
         });
         courseModelItem.save((err, res) => {

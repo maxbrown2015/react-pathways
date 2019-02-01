@@ -29,6 +29,7 @@
     "mocha": "*",
     "nodemon": "^1.18.7",
     "proxyquire": "*",
+    "react-css-transition-replace": "^3.0.3",
     "redux-devtools": "*",
     "sinon": "*",
     "vinyl-source-stream": "*",
@@ -59,10 +60,12 @@
     "i": "^0.3.6",
     "jquery": "*",
     "lodash": "*",
+    "material-ui-search-bar": "^0.4.2",
     "mongoose": "^5.3.15",
     "npm": "^6.4.1",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-addons-test-utils": "*",
     "react-addons-update": "*",
     "react-bootstrap": "^1.0.0-beta.5",
@@ -73,10 +76,14 @@
     "react-pose": "^4.0.6",
     "react-redux": "*",
     "react-reveal": "^1.2.2",
+    "react-scrollable-list": "^1.2.0",
     "react-search-box": "^2.0.1",
+    "react-search-field": "^1.0.0",
+    "react-spring": "^7.2.10",
     "react-transition-group": "^2.5.3",
     "reactify": "*",
     "reactjs-popup": "^1.3.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "typeco": "^1.0.0"
   }
 }

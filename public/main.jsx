@@ -17,16 +17,18 @@ function edgesAreSame(first, second) {
 function parseCoursesIntoNodeSet(courses) {
   let nodes = [];
   Object.keys(courses).forEach((key) => {
-    const   course = courses[key];
+    const  course = courses[key];
+    const color = course.type === 'lecture' ? 'red' : '#D2E5FF';
     const node = {
       id: Number(course.number),
       label: course.number,
-      title: course.title,
+      title: course.title,  
       description: "",
       selectedPathways: course.selectedPathways
     }
     nodes.push(node);
   });
+     
   return nodes;
 }
 

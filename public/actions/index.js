@@ -14,6 +14,13 @@ const catalogSelect = (selected) => {
   };
 };
 
+const searchSelect = (selected) => {
+  return {
+    type: 'SEARCH_SELECT',
+    selected: selected
+  };
+}
+
 
 const buildCatalog = (connected) => {
   return {
@@ -45,4 +52,5 @@ const resetSelectionOptions = () => {
 
 
 
-export {networkSelect, catalogSelect, buildCatalog, legendSelect, setActivePathways, resetSelectionOptions};
+
+export {networkSelect, catalogSelect, legendSelect, searchSelect, buildCatalog, setActivePathways, resetSelectionOptions};
