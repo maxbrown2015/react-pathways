@@ -4,7 +4,7 @@
   "private": false,
   "homepage": "https://github.com/maxbrown2015/react-pathways",
   "scripts": {
-    "start": "nodemon app.js --exec babel-node --presets es2015",
+   "start": "nodemon app.js --exec babel-node --presets es2015",
     "test": "mocha --compilers jsx:babel-register"
   },
   "author": "Maxwell Brown, Shadrack Lilan",

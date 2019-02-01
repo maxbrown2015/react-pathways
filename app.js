@@ -2,7 +2,7 @@
 import express from 'express';
 import path from 'path';
 import ejs from 'ejs';
-//import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import ImportExportRouter from './routes/ImportExportRouter';
@@ -30,7 +30,7 @@ app.use('/importexport', ImportExportRouter);
 
 
 var dbURI='mongodb://maxbrown:pathways1@ds153851.mlab.com:53851/upenn_history_pathways'
-mongoose.connect(process.env.DB_URI,function(err){    
+mongoose.connect(process.env.DB_URI || dbURI,function(err){    
     if(err){
     console.log('Some problem with the connection ' +err)   
     } 
