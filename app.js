@@ -12,7 +12,7 @@ let app = express();
 const port = process.env.PORT || 3000;
 
 app.set('port', port);
-
+console.log(port);
 
 // Use the EJS rendering engine for HTML located in /views
 app.set('views', __dirname + '/views');

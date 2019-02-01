@@ -1,7 +1,7 @@
 {
   "name": "CIS197-React-HW",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "homepage": "https://github.com/maxbrown2015/react-pathways",
   "scripts": {
     "start": "nodemon app.js --exec babel-node --presets es2015",
