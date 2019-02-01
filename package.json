@@ -2,11 +2,12 @@
   "name": "CIS197-React-HW",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://github.com/maxbrown2015/react-pathways",
   "scripts": {
     "start": "nodemon app.js --exec babel-node --presets es2015",
     "test": "mocha --compilers jsx:babel-register"
   },
-  "author": "Devesh Dayal, Steve Vitali",
+  "author": "Maxwell Brown, Shadrack Lilan",
   "devDependencies": {
     "babel-preset-react": "*",
     "babel-register": "^6.23.0",
@@ -27,7 +28,7 @@
     "gulp-zip": "*",
     "jsdom": "*",
     "mocha": "*",
-    "nodemon": "^1.18.7",
+    "nodemon": "^1.18.9",
     "proxyquire": "*",
     "react-css-transition-replace": "^3.0.3",
     "redux-devtools": "*",
@@ -52,6 +53,7 @@
     "event-stream": "^4.0.1",
     "express": "^4.16.4",
     "flexbox-react": "^4.4.0",
+    "gh-pages": "^2.0.1",
     "grunt": "^1.0.1",
     "grunt-cli": "*",
     "gruntify-eslint": "*",
