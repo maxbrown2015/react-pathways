@@ -56,7 +56,9 @@ var JS = [
   'public/**/*.jsx',
   'public/actions/*.js',
   'public/reducers/*.js',
-  'public/main.jsx'
+  'public/main.jsx',
+  'public/components/*/.jsx'
+
 ];
 
 var BRUCE_FILES = [
@@ -70,6 +72,8 @@ var COMPILE_FILES = [
   'public/reducers/*.js',
   'public/main.jsx',
   'public/*.js',
+  'public/components/*/.jsx'
+
 ];
 
 var OTHER_FILES = [

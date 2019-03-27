@@ -70,8 +70,8 @@ router.route('/import').get(function (req, res) {
     } else {
       Pathway.find((err, pathways) => {
         if (err) {
-console.log(err)
-;}
+      console.log(err)
+      ;}
         res.json({
           courses: courses,
           pathways: pathways,

@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { mainReducer as reducers } from './reducers';
 import * as actions from './actions/index';
-import RootContainer from './components/RootContainer';
 import axios from 'axios';
+import Root from './components/Root';
 
 
 function edgesAreSame(first, second) {
@@ -134,9 +134,6 @@ function loadFromMongoAndInitialize() {
       };
       courses[Number(course.number)] = (courseViewData);
     });
-    console.log(courses);
-
-    console.log(response.data.pathways);
 
     response.data.pathways.forEach((pathway) => {
       const pathwayViewData = {
@@ -148,8 +145,6 @@ function loadFromMongoAndInitialize() {
       };
       pathways[pathway.id] = pathwayViewData;
     });
-
-    console.log(pathways);
 
     // sort courses by number
     Object.keys(courses).sort(function (a, b) {
@@ -181,13 +176,13 @@ function loadFromMongoAndInitialize() {
     
     const store = createStore(reducers, state);
     ReactDOM.render(
-      <RootContainer store={store}/>,
+      <Root store={store}/>,
       document.getElementById('container')
     );
 
     document.addEventListener('DOMContentLoaded', () => {
       ReactDOM.render(
-        < RootContainer store={store}/>,
+        <Root store={store}/>,
         document.getElementById('container')
       );
     });
