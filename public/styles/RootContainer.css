@@ -1,0 +1,8 @@
+.RootContainer {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+     background: linear-gradient(#01256e, #95001a ,#01256e );
+}

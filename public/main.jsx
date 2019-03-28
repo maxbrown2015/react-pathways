@@ -1,11 +1,10 @@
-// CIS 197 - React HW
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { mainReducer as reducers } from './reducers';
 import * as actions from './actions/index';
 import axios from 'axios';
-import Root from './components/Root';
+import Root from './components/Root.jsx';
 
 
 function edgesAreSame(first, second) {
@@ -153,7 +152,7 @@ function loadFromMongoAndInitialize() {
       return aNum - bNum;
     });
 
-    console.log(courses);
+   // console.log(courses);
 
     const nodes = parseCoursesIntoNodeSet(courses);
     const edges = createEdgeSet(nodes, pathways);

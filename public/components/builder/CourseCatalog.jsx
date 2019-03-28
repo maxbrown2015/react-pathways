@@ -241,9 +241,7 @@ class CourseCatalog extends React.Component {
     */
 
     return (
-      <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
-        <Flexbox height='50px' width='100%' marginBottom='50px' justifyContent="center" alignSelf='center' style={headerStyle}>Course Catalog</Flexbox>
-        </Flexbox>
+      <div>Hello world</div>
     )
   }
 }

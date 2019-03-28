@@ -1,15 +1,25 @@
 
 import express from 'express';
 import path from 'path';
-import ejs from 'ejs';
+import ejs from 'ejs'; 
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import webpack from 'webpack';
+import config from "./webpack.config.js"
+import middleware from 'webpack-dev-middleware';
 import ImportExportRouter from './routes/ImportExportRouter';
-
+import history from 'connect-history-api-fallback'; 
 
 let app = express();
 const port = process.env.PORT || 3000;
+
+
+app.use(history());
+const compiler = webpack(config); 
+app.use(middleware(compiler, {
+  publicPath: '/'
+}));
 
 app.set('port', port);
 console.log(port);
@@ -19,9 +29,11 @@ app.set('views', __dirname + '/views');
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
 
-
 // Host static files on URL path
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
+
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -41,12 +53,13 @@ mongoose.connect(process.env.DB_URI || dbURI, function(err){
 
 global.mongoose = mongoose;
 
-
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('./dist/index');
 });
 
 // Start server
 app.listen(app.get('port'), () => {
   console.log(`Express game server listening on port ${port}`);
 });
+
+

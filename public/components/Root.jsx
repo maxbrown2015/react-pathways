@@ -1,21 +1,24 @@
 // source: https://redux.js.org/advanced/usage-with-react-router
-
-
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import CourseCatalog from './builder/CourseCatalog';
-import RootContainer from './main/RootContainer'
+import PropTypes from 'prop-types';
+import { BrowserRouter, Router, Route, Switch } from 'react-router-dom';
+import CourseCatalog from './builder/CourseCatalog.jsx';
+import RootContainer from './main/RootContainer.jsx';
 
 class Root extends React.Component {
   render() {
-      return ( <Provider store={this.props.store}>
-        <Router>
-          <Route path="/" component={RootContainer} />
-          
-        </Router>
-      </Provider>
+    console.log(this.props.store);
+      return (
+        <BrowserRouter>
+          <div>
+          <Switch>
+            <Route exact path="/"
+            render={()=><RootContainer store={this.props.store}/>} />
+            <Route exact path="/builder" 
+            render={()=> <CourseCatalog store={this.props.store}/>} />
+          </Switch>
+          </div>
+      </BrowserRouter> 
     )
   }
 }

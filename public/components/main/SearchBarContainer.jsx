@@ -3,7 +3,7 @@ import '../../styles/SearchBarContainer.css';
 import Flexbox from 'flexbox-react';
 import * as actions from '../../actions/index.js';
 import SearchBar from '@opuscapita/react-searchbar';
-import SearchModal from './SearchModal';
+import SearchModal from './SearchModal.jsx';
 import ReactScrollableList from 'react-scrollable-list';
  
 class SearchBarContainer extends React.Component {

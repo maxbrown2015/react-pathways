@@ -1,5 +1,5 @@
 import React from 'react';
-import Legend from './Legend';
+import Legend from './Legend.jsx';
 import Flexbox from 'flexbox-react'
 
 class LegendContainer extends React.Component {
