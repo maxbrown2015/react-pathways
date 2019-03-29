@@ -79,7 +79,7 @@
     "react-fontawesome": "^1.6.1",
     "react-graph-vis": "^1.0.2",
     "react-pose": "^4.0.6",
-    "react-redux": "*",
+    "react-redux": "^6.0.1",
     "react-reveal": "^1.2.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

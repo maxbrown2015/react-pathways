@@ -13,7 +13,6 @@ const addEdgeStyles = function addEdgeStyles(edges) {
     if (edgesAreSame(currEdge, nextEdge)) {
       currEdge['smooth'] = { type: 'curvedCCW', roundness: -0.2 };
       nextEdge['smooth'] = { type: 'curvedCCW', roundness: 0.2 };
-
       i += 2;
     }
     else {

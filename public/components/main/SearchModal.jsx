@@ -3,8 +3,6 @@ import '../../styles/SearchModal.css';
 import Flexbox from 'flexbox-react';
 import * as actions from '../../actions/index.js';
 
-
-
 class SearchModal extends React.Component {
   constructor(props) {
     super(props);

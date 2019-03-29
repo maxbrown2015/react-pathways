@@ -3,11 +3,6 @@ import Flexbox from 'flexbox-react';
 import Graph from 'react-graph-vis';
 import * as actions from '../../actions/index.js';
 
-
-
-/*    */
-
-
 const networkOptions = {
   autoResize: false,
   width: '100%',
