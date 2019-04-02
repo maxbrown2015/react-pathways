@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const Course = require('../public/models/Course');
+const Course = require('../public/models/course');
 const Pathway = require('../public/models/Pathway');
 
-router.route('/').get(function (req, res) {
+router.route('/import').get(function (req, res) {
   Course.find((err, courses) => {
     if (err) {
       console.log(err);

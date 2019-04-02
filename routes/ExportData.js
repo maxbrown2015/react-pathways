@@ -1,8 +1,6 @@
 const express = require('express');
-const app = express();
-
 const router = express.Router();
-const Course = require('../public/models/Course');
+const Course = require('../public/models/course');
 const Pathway = require('../public/models/Pathway');
 
 router.route('/export').post((req, res) => {

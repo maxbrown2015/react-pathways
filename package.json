@@ -48,6 +48,7 @@
     "event-stream": "^4.0.1",
     "express": "^4.16.4",
     "flexbox-react": "^4.4.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "*",
     "material-ui-search-bar": "^0.4.2",
     "mongoose": "^5.3.15",

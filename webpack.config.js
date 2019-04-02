@@ -2,11 +2,12 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 const config = {
-  entry: './public/main.jsx',
+  entry: {
+    main: './public/main.jsx',
+    admin: './public/components/Root.jsx',
+  },
   output: {
-      filename: 'main.js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
   },
   module: {
       rules: [
@@ -41,7 +42,13 @@ const config = {
   plugins: [
       new HtmlWebPackPlugin({
         template: "./views/index.html",
-        filename: "./index.html"
+        filename: "index.html",
+        chunks:['main']
+      }), 
+      new HtmlWebPackPlugin({
+        template: "./views/index.html",
+        filename: "admin.html",
+        chunks:['admin']
       })
     ],
   mode: "development"

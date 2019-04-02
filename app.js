@@ -8,8 +8,8 @@ import cors from 'cors';
 import webpack from 'webpack';
 import config from "./webpack.config.js"
 import middleware from 'webpack-dev-middleware';
-import ImportExportRouter from './routes/ImportExportRouter';
-import ImportRouter from './routes/ImportExportRouter';
+import ImportRouter from './routes/ImportData';
+import ExportRouter from './routes/ExportData'
 import history from 'connect-history-api-fallback'; 
 
 const app = express();
@@ -34,15 +34,12 @@ app.set('view engine', 'html');
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
-
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use('/', ImportRouter);  
+app.use(ImportRouter);  
 
-
-var dbURI='mongodb://maxbrown:pathways1@ds153851.mlab.com:53851/upenn_history_pathways'
+const dbURI='mongodb://maxbrown:pathways1@ds153851.mlab.com:53851/upenn_history_pathways'
 mongoose.connect(process.env.DB_URI || dbURI, function(err){    
     if(err){
     console.log('Some problem with the connection ' +err)   
@@ -51,8 +48,6 @@ mongoose.connect(process.env.DB_URI || dbURI, function(err){
       console.log('The Mongoose connection is ready');
     }
 });
-
-global.mongoose = mongoose;
 
 app.get('/', (req, res) => {
   res.render('./dist/index');
