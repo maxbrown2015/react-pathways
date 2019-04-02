@@ -9,6 +9,7 @@ import webpack from 'webpack';
 import config from "./webpack.config.js"
 import middleware from 'webpack-dev-middleware';
 import ImportExportRouter from './routes/ImportExportRouter';
+import ImportRouter from './routes/ImportExportRouter';
 import history from 'connect-history-api-fallback'; 
 
 let app = express();
@@ -38,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use('/importexport', ImportExportRouter);  
+app.use('/', ImportRouter);  
 
 
 var dbURI='mongodb://maxbrown:pathways1@ds153851.mlab.com:53851/upenn_history_pathways'
