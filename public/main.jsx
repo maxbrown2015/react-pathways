@@ -50,7 +50,7 @@ const loadFromMongoAndInitializeStore = function loadFromMongoAndInitialize() {
   let courses = {};
   let pathways = {};
 
-  axios.get('http://localhost:3000/importexport/import').then(response => {
+  axios.get('http://localhost:3000/import').then(response => {
     //console.log(response);
     courses = loadCourses(response);
     pathways = loadPathways(response);
