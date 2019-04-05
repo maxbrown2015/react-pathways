@@ -4,8 +4,11 @@ An interactive web app to help visitors to explore the courses that Penn's histo
 
 ## Features
 
-| Feature | Implemented | Tested |
-|---------|-------------|--------|
-|         |             |        |
-|         |             |        |
-|         |             |        |
+| Feature            | Implemented | Tested |
+|--------------------|-------------|--------|
+| Graph              | [x]         | [ ]    |
+| Admin Panel        | [x]         | [ ]    |
+| Styling            | [ ]         | [ ]    |
+| Session management | [ ]         | [ ]    |
+| Tree shaking       | [ ]         | [ ]    |
+| Env                | [ ]         | [ ]    |
