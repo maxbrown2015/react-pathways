@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../styles/Legend.css';
+import '../styles/Legend.css';
 import Flexbox from 'flexbox-react';
 import posed from 'react-pose';
-import * as actions from '../../actions/index.js';
+import * as actions from '../actions/index.js';
 
 
 class Legend extends React.Component {

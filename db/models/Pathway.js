@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Pathway = new mongoose.Schema({
   name: { type: String },

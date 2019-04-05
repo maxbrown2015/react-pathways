@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/NetworkContainer.css';
+import '../styles/NetworkContainer.css';
 import Network from './Network.jsx';
 import LegendContainer from './LegendContainer.jsx'
 import Flexbox from 'flexbox-react'

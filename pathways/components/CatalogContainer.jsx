@@ -1,8 +1,8 @@
 
 import React from 'react';
-import '../../styles/CatalogContainer.css';
+import '../styles/CatalogContainer.css';
 import Flexbox from 'flexbox-react';
-import * as actions from '../../actions/index.js';
+import * as actions from '../actions/index.js';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 const header = 'Course Information';

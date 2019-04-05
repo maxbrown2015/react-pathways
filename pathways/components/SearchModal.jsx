@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/SearchModal.css';
+import '../styles/SearchModal.css';
 import Flexbox from 'flexbox-react';
-import * as actions from '../../actions/index.js';
+import * as actions from '../actions/index.js';
 
 class SearchModal extends React.Component {
   constructor(props) {

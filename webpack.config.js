@@ -1,60 +1,57 @@
-const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-const config = {
+module.exports = {
   entry: {
-    main: './public/main.jsx',
-    admin: './public/components/Root.jsx',
+    client: './pathways/main.jsx',
+    admin: './admin_panel/main.jsx',
   },
   output: {
-      path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist',
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
-      rules: [
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.html$/,
+        use: [
           {
-              test: /\.(js|jsx)$/,
-              exclude: /node_modules/,
-              use : {
-                  loader: "babel-loader"
-              }
+            loader: 'html-loader',
           },
-          {
-              test: /\.html$/,
-              use: [
-                {
-                  loader: "html-loader"
-                }
-              ]
-          },      
-          {
-            test: /\.css$/,
-            use: [
-              { loader: "style-loader" },
-              { loader: "css-loader" }
-            ]
-          }
-      ],
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
+      },
+    ],
   },
   devServer: {
-    publicPath: "/",
+    publicPath: '/',
     historyApiFallback: true,
   },
   plugins: [
-      new HtmlWebPackPlugin({
-        template: "./views/index.html",
-        filename: "index.html",
-        chunks:['main']
-      }), 
-      new HtmlWebPackPlugin({
-        template: "./views/index.html",
-        filename: "admin.html",
-        chunks:['admin']
-      })
-    ],
-  mode: "development"
-}
+    new HtmlWebPackPlugin({
+      template: './views/index.html',
+      filename: 'client.html',
+      chunks: ['client'],
 
-module.exports = config;
-
-//export default config;
-
+    }),
+    new HtmlWebPackPlugin({
+      template: './views/index.html',
+      filename: 'admin.html',
+      chunks: ['admin'],
+    }),
+  ],
+};

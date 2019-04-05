@@ -1,4 +1,3 @@
-// redux actions 
 
 const networkSelect = (selected) => {
   return {

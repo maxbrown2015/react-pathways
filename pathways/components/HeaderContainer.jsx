@@ -1,6 +1,6 @@
 
 import React from 'react';
-import '../../styles/HeaderContainer.css';
+import '../styles/HeaderContainer.css';
 import Flexbox from 'flexbox-react';
 import Fade from 'react-reveal/Fade';
 

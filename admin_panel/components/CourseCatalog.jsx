@@ -1,11 +1,11 @@
 import React from 'react';
-//import Course from './Course';
-import * as actions from '../../actions/index.js';
+import Course from './Course.jsx';
+import * as actions from '../actions/index.js';
 import Flexbox from 'flexbox-react';
-//import FontAwesome from 'react-fontawesome';
-//import CourseTemplate from './CourseTemplate';
-//import Popup from 'reactjs-popup';
-//import SearchBar from '@opuscapita/react-searchbar';
+import FontAwesome from 'react-fontawesome';
+import CourseTemplate from './CourseTemplate.jsx';
+import Popup from 'reactjs-popup';
+import SearchBar from '@opuscapita/react-searchbar';
 
 
 class CourseCatalog extends React.Component {
@@ -132,6 +132,7 @@ class CourseCatalog extends React.Component {
           <FontAwesome name='fa-upload' className='fa-upload' style={exportButtonStyle} onClick={this.toggleExportPrompt}
           /> 
         </Flexbox>
+
       </Flexbox>
     );
   }
@@ -226,7 +227,6 @@ class CourseCatalog extends React.Component {
     const headerStyle = {
       fontSize: '30px'
     };
-    /*
     return (
       <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
         <Flexbox height='50px' width='100%' marginBottom='50px' justifyContent="center" alignSelf='center' style={headerStyle}>Course Catalog</Flexbox>
@@ -238,11 +238,6 @@ class CourseCatalog extends React.Component {
         {this.renderExportPrompt()}
       </Flexbox>
     );
-    */
-
-    return (
-      <div>Hello world</div>
-    )
   }
 }
 
