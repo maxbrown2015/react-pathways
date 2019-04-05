@@ -1,7 +1,6 @@
 
 const express = require('express');
 const path = require('path');
-const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -11,11 +10,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Use the EJS rendering engine for HTML located in /views
-app.engine('html', ejs.__express);
-app.set('view engine', 'html');
-
-
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
